@@ -8,6 +8,16 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+<div class="autor-card" *ngFor="let autor of autores">
+  <mat-card>
+    <mat-card-title>{{ autor.nombre }}</mat-card-title>
+    <mat-card-content>
+      <p><strong>Nacionalidad:</strong> {{ autor.nacionalidad }}</p>
+    </mat-card-content>
+    <button mat-button color="primary" [routerLink]="['/autores', autor.id, 'editar']">Editar</button>
+    <button mat-button color="warn" (click)="eliminarAutor(autor.id)">Eliminar</button>
+  </mat-card>
+</div>
 <body>
   <app-root></app-root>
 </body>
