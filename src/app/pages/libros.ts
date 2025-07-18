@@ -1,9 +1,5 @@
-import { Injectable } from '@angular/core';
-
-@Injectable({
-  providedIn: 'root'
-})
-export class Libros {
-
-  constructor() { }
+export interface libros{
+    id:number;
+    titulo:string;
+    autor:string;
 }
