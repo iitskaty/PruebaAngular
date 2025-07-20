@@ -1,0 +1,35 @@
+.prestamos-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+input {
+  padding: 8px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.resultado, .no-encontrado {
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.resultado {
+  background-color: #e7f4e4;
+}
+
+.no-encontrado {
+  background-color: #f8d7da;
+  color: #721c24;
+}
