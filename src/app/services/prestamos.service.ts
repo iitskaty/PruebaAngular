@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Prestamo } from '../pages/prestamo';
+import { Prestamo } from '../pages/prestamos-component/prestamos';
 
 @Injectable({
   providedIn: 'root'

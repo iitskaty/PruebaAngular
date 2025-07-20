@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';   // ← Importa FormsModule
 
-import { LibrosService } from '../services/libros.service';
+import { LibrosService } from '../../services/libros.service'; // Corrected path
 import { libros } from './libros';
 
 @Component({
@@ -21,7 +21,7 @@ export class LibrosComponent {
 
   buscarLibro(): void {
     this.librosService.buscarlibro(this.nombreBuscado).subscribe(
-      (libro) => {
+      (libro: any) => {
         if (libro) {
           this.libroEncontrado = libro;
           this.libroNoEncontrado = false;
@@ -30,7 +30,7 @@ export class LibrosComponent {
           this.libroNoEncontrado = true;
         }
       },
-      (error) => {
+      (error: any) => { // Added explicit type
         this.libroEncontrado = null;
         this.libroNoEncontrado = true;
       }

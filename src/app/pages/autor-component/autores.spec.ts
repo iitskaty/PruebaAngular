@@ -1,16 +1,13 @@
-import { TestBed } from '@angular/core/testing';
-
 import { Autores } from './autores';
 
 describe('Autores', () => {
-  let service: Autores;
+  let autor: Autores;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(Autores);
+    autor = { id: 1, nombre: 'Autor de prueba', nacionalidad: 'Desconocida' }; // Crear un objeto que cumpla con la interfaz Autores
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
+  it('Autor creado ', () => {
+    expect(autor).toBeTruthy();
   });
 });

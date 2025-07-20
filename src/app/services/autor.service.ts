@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-export interface Autores {
+export interface Autor {
   id_autor?: number;
   nombre: string;
   nacionalidad: string;
@@ -15,7 +15,7 @@ export class AutorService {
   private apiUrl = 'https://apiclases.inacode.cl/apiIOTBE/clientes';
   constructor(private http: HttpClient) { }
 
-  obtenerAutoress(): Observable<any[]> {
+  obtenerAutores(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);
   }
 
@@ -23,11 +23,11 @@ export class AutorService {
     return this.http.get<any>(`${this.apiUrl}/${id}`);
   }
 
-  CrearAutor(autor: any): Observable<any> {
+  CrearAutor(autor: Autor): Observable<any> {
     return this.http.post<any>(this.apiUrl, autor);
   }
 
-  ActualizarAutor(id: number, autor: any): Observable<any> {
+  ActualizarAutor(id: number, autor: Autor): Observable<any> {
     return this.http.put<any>(`${this.apiUrl}/${id}`, autor);
   }
 

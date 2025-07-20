@@ -20,20 +20,20 @@ export class AutoresComponent {
   constructor(private AutoresService: AutorService) {}
 
   obtenerAutores(): void {
-    this.AutoresService.obtenerAutores(this.nombreBuscado).subscribe(
+    this.AutoresService.obtenerAutores().subscribe(
       (autor) => {
-      if (autor) {
-        this.autorEncontrado = autor;
-        this.autorNoEncontrado = false;
-      } else {
-        this.autorEncontrado = null;
-        this.autorNoEncontrado = true;
-      }
+        if (Array.isArray(autor) && autor.length > 0) {
+          this.autorEncontrado = autor[0]; // Asignar el primer autor si es un array
+          this.autorNoEncontrado = false;
+        } else {
+          this.autorEncontrado = null;
+          this.autorNoEncontrado = true;
+        }
       },
       (error) => {
-      console.error('Error al obtener el autor:', error);
-      this.autorEncontrado = null;
-      this.autorNoEncontrado = true;
+        console.error('Error al obtener el autor:', error);
+        this.autorEncontrado = null;
+        this.autorNoEncontrado = true;
       }
     );
   }

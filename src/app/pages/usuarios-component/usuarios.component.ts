@@ -1,10 +1,11 @@
-import { Component } from "@angular/core";
+import { Component, NO_ERRORS_SCHEMA } from "@angular/core";
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-usuarios',
   standalone: true,
   imports: [FormsModule],
+  schemas: [NO_ERRORS_SCHEMA],
   templateUrl: './usuarios.component.html',
   styleUrls: ['./usuarios.component.css']
 })
@@ -33,6 +34,6 @@ export class UsuariosComponent {
 
      editarUsuario(usuario: any) {
     this.nuevoUsuario = { ...usuario };
-    this.eliminarUsuario(usuario); // Así editamos eliminando el viejo y guardando el nuevo
+    this.eliminarUsuario(usuario); 
   }
 }

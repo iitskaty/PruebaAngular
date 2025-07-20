@@ -1,10 +1,10 @@
 import { TestBed } from '@angular/core/testing';
 
 import { libros } from './libros';
-import { LibrosService } from '../services/libros.service';
+import { LibrosService } from '../../services/libros.service'; // Corrected path
 
 describe('libros', () => {
-  let service: libros;
+  let service: LibrosService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
