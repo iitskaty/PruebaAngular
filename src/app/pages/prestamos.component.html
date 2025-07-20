@@ -1,0 +1,18 @@
+<div class="prestamos-container">
+  <h2>Buscar Préstamo</h2>
+
+  <input type="number" [(ngModel)]="idBuscado" placeholder="Ingresa ID del préstamo" />
+  <button (click)="buscarPrestamo()">Buscar</button>
+
+  <div *ngIf="prestamoEncontrado" class="resultado">
+    <p><strong>ID:</strong> {{ prestamoEncontrado.id }}</p>
+    <p><strong>Usuario:</strong> {{ prestamoEncontrado.usuario }}</p>
+    <p><strong>Libro:</strong> {{ prestamoEncontrado.libro }}</p>
+    <p><strong>Fecha Préstamo:</strong> {{ prestamoEncontrado.fechaPrestamo }}</p>
+    <p><strong>Fecha Devolución:</strong> {{ prestamoEncontrado.fechaDevolucion }}</p>
+  </div>
+
+  <div *ngIf="prestamoNoEncontrado" class="no-encontrado">
+    <p>No se encontró ningún préstamo con ese ID 😢</p>
+  </div>
+</div>
