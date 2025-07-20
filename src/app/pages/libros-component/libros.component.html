@@ -1,0 +1,63 @@
+<div class="container-fluid px-4 py-4">
+  <h2 class="text-primary mb-4">Libros</h2>
+
+  <form (ngSubmit)="guardarLibro()" class="row g-2 mb-4 align-items-end">
+    <div class="col-md-4">
+      <label class="form-label">Titulo del libro</label>
+      <input [(ngModel)]="libroNuevo.titulo" name="titulo" class="form-control" required />
+    </div>
+    <div class="col-md-4">
+      <label class="form-label">Autores</label>
+      <input [(ngModel)]="libroNuevo.autores" name="autores" class="form-control" required />
+    </div>
+    <div class="col-md-1">
+      <button type="submit" class="btn btn-{{ modoEdicion ? 'warning' : 'success' }} w-100">
+        <i class="bi bi-{{ modoEdicion ? 'arrow-repeat' : 'plus-circle' }}"></i>
+      </button>
+    </div>
+  </form>
+
+  <form (ngSubmit)="buscarLibro()" class="row g-2 mb-4 align-items-end">
+    <div class="col-md-4">
+      <label class="form-label">Buscar por titulo del libro</label>
+      <input [(ngModel)]="nombreBuscado" name="busqueda" class="form-control" />
+    </div>
+    <div class="col-md-2">
+      <button type="submit" class="btn btn-primary w-100">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </form>
+
+  <div class="table-responsive">
+    <table class="table table-striped table-hover align-middle">
+      <thead class="table-dark">
+        <tr>
+          <th>ID</th>
+          <th>Titulo</th>
+          <th>Autores</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let libro of librosEncontrados">
+          <td>{{ libro.id }}</td>
+          <td>{{ libro.titulo }}</td>
+          <td>{{ libro.autores }}</td>
+          <td>
+            <button class="btn btn-sm btn-warning me-1" (click)="editarLibro(libro)">
+              <i class="bi bi-pencil-fill"></i>
+            </button>
+            <button class="btn btn-sm btn-danger" (click)="eliminarLibro(libro.id)">
+              <i class="bi bi-trash-fill"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div *ngIf="librosEncontrados.length === 0 && busquedaRealizada" class="alert alert-danger mt-3">
+      No se encontro ningun libro :// vuelve a intentarlo
+    </div>
+  </div>
+</div>

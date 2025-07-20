@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { AutorService } from '../services/autor.service';
+import { AutorService } from '../../services/autor.service';
 import { Autores } from './autores';
 
 @Component({

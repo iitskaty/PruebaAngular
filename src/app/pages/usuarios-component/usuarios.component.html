@@ -1,0 +1,33 @@
+<div class="usuarios-container">
+    <h2>Gestión de Usuarios</h2>
+
+    <form (submit)="agregarUsuario()">
+        <input type="text" placeholder="Nombre" [(ngModel)]="nuevoUsuario.nombre" name="nombre" required>
+        <input type="email" placeholder="Correo" [(ngModel)]="nuevoUsuario.correo" name="correo" required>
+        <input type="text" placeholder="RUT" [(ngModel)]="nuevoUsuario.rut" name="rut" required>
+
+        <button type="submit">Agregar Usuario</button>
+    </form>
+
+    <table>
+        <thread>
+            <tr>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>RUT</th>
+                <th>Acciones</th>
+            </tr>
+        </thread>
+        <tbody>
+            <tr *ngFor="let usuario of usuarios">
+                <td>{{ usuario.nombre }}</td>
+                <td>{{ usuario.correo }}</td>
+                <td>{{ usuario.rut }}</td>
+                <td>
+                    <button (click)="editarUsuario(usuario)">Editar</button>
+                    <button (click)="eliminarUsuario(usuario)">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
