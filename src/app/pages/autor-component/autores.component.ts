@@ -2,9 +2,6 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { AutorService } from '../../services/autor.service';
-import { Autores } from './autores';
-
 @Component({
   selector: 'app-autores',
   standalone: true,
@@ -13,28 +10,31 @@ import { Autores } from './autores';
   styleUrls: ['./autores.component.css']
 })
 export class AutoresComponent {
-  nombreBuscado: string = '';
-  autorEncontrado: Autores | null = null;
-  autorNoEncontrado: boolean = false;
+  autorNuevo = {
+    nombre: '',
+    nacionalidad: ''
+  };
 
-  constructor(private AutoresService: AutorService) {}
+  autores: any[] = [];
+  modoEdicion = false;
 
-  obtenerAutores(): void {
-    this.AutoresService.obtenerAutores().subscribe(
-      (autor) => {
-        if (Array.isArray(autor) && autor.length > 0) {
-          this.autorEncontrado = autor[0]; // Asignar el primer autor si es un array
-          this.autorNoEncontrado = false;
-        } else {
-          this.autorEncontrado = null;
-          this.autorNoEncontrado = true;
-        }
-      },
-      (error) => {
-        console.error('Error al obtener el autor:', error);
-        this.autorEncontrado = null;
-        this.autorNoEncontrado = true;
-      }
-    );
+  guardarAutor() {
+    if (this.modoEdicion) {
+    } else {
+      const nuevo = { ...this.autorNuevo, id_autor: Date.now() }; 
+      this.autores.push(nuevo);
+    }
+
+    this.autorNuevo = { nombre: '', nacionalidad: '' };
+    this.modoEdicion = false;
+  }
+
+  editarAutor(autor: any) {
+    this.autorNuevo = { ...autor };
+    this.modoEdicion = true;
+  }
+
+  eliminarAutor(id: number) {
+    this.autores = this.autores.filter(a => a.id_autor !== id);
   }
 }

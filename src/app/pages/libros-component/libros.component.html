@@ -7,8 +7,10 @@
       <input [(ngModel)]="libroNuevo.titulo" name="titulo" class="form-control" required />
     </div>
     <div class="col-md-4">
-      <label class="form-label">Autores</label>
-      <input [(ngModel)]="libroNuevo.autores" name="autores" class="form-control" required />
+      <label class="form-label">Autor</label>
+      <select [(ngModel)]="libroNuevo.id_autor" name="id_autor" class="form-control" required>
+        <option *ngFor="let autor of autoresDisponibles" [value]="autor.id">{{ autor.nombre }}</option>
+      </select>
     </div>
     <div class="col-md-1">
       <button type="submit" class="btn btn-{{ modoEdicion ? 'warning' : 'success' }} w-100">
@@ -35,7 +37,7 @@
         <tr>
           <th>ID</th>
           <th>Titulo</th>
-          <th>Autores</th>
+          <th>Autor</th>
           <th>Acciones</th>
         </tr>
       </thead>
@@ -43,7 +45,7 @@
         <tr *ngFor="let libro of librosEncontrados">
           <td>{{ libro.id }}</td>
           <td>{{ libro.titulo }}</td>
-          <td>{{ libro.autores }}</td>
+          <td>{{ obtenerNombreAutor(libro.id_autor) }}</td>
           <td>
             <button class="btn btn-sm btn-warning me-1" (click)="editarLibro(libro)">
               <i class="bi bi-pencil-fill"></i>
@@ -57,7 +59,7 @@
     </table>
 
     <div *ngIf="librosEncontrados.length === 0 && busquedaRealizada" class="alert alert-danger mt-3">
-      No se encontro ningun libro :// vuelve a intentarlo
+      No se encontró ningún libro :// vuelve a intentarlo
     </div>
   </div>
 </div>

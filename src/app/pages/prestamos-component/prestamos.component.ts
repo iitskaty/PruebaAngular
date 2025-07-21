@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
-import { PrestamosService } from '../../services/prestamos.service'; // Corrige la ruta del servicio
+import { PrestamosService } from '../../services/prestamos.service'; 
 import { Prestamo } from './prestamos';
 
 @Component({
@@ -18,11 +17,11 @@ export class PrestamoComponent {
   prestamoEncontrado: Prestamo | null = null;
   prestamoNoEncontrado: boolean = false;
 
-  constructor(private prestamosService: PrestamosService) {} // Cambia PrestamoService por PrestamosService
+  constructor(private prestamosService: PrestamosService) {} 
 
   buscarPrestamo(): void {
     this.prestamosService.buscarPrestamo(this.idBuscado).subscribe(
-      (prestamo: Prestamo | null) => { // Cambia el tipo a Prestamo | null
+      (prestamo: Prestamo | null) => { 
         if (prestamo) {
           this.prestamoEncontrado = prestamo;
           this.prestamoNoEncontrado = false;

@@ -8,6 +8,6 @@ import { provideRouter } from '@angular/router';
 bootstrapApplication(App, {
   providers: [
     provideRouter(routes),
-    provideHttpClient(withFetch()) // ← NECESARIO también en SSR
+    provideHttpClient(withFetch()) 
   ]
 });

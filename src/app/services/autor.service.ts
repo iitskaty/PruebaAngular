@@ -2,36 +2,38 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+
 export interface Autor {
-  id_autor?: number;
+  id: number;
   nombre: string;
-  nacionalidad: string;
+  nacionalidad?: string;
 }
 
 @Injectable({
   providedIn: 'root'
 })
-export class AutorService {
-  private apiUrl = 'https://apiclases.inacode.cl/apiIOTBE/clientes';
+export class AutoresService {
+  private apiUrl = 'https://apiclases.inacode.cl/apiIOTBE/autores'; // Ajusta la URL
+
   constructor(private http: HttpClient) { }
 
-  obtenerAutores(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
+  obtenerTodos(): Observable<Autor[]> {
+    return this.http.get<Autor[]>(this.apiUrl);
   }
 
-  AutorID(id: number): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/${id}`);
+  obtenerPorId(id: number): Observable<Autor> {
+    return this.http.get<Autor>(`${this.apiUrl}/${id}`);
   }
 
-  CrearAutor(autor: Autor): Observable<any> {
-    return this.http.post<any>(this.apiUrl, autor);
+  crearAutor(autor: Autor): Observable<any> {
+    return this.http.post(this.apiUrl, autor);
   }
 
-  ActualizarAutor(id: number, autor: Autor): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/${id}`, autor);
+  actualizarAutor(id: number, autor: Autor): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${id}`, autor);
   }
 
-  BrorrarAutor(id: number): Observable<any> {
-    return this.http.delete<any>(`${this.apiUrl}/${id}`);
+  borrarAutor(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${id}`);
   }
 }
